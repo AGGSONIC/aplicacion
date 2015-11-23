@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.abraham.in_plant" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".InicioSesion"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Registro"
+            android:label="@string/title_activity_registro" >
+        </activity>
+        <activity
+            android:name=".Estado"
+            android:label="@string/title_activity_estado" >
+        </activity>
+        <activity
+            android:name=".Dispositivos"
+            android:label="@string/title_activity_dispositivos" >
+        </activity>
+        <activity
+            android:name=".Modificar"
+            android:label="@string/title_activity_modificar" >
+        </activity>
+        <activity
+            android:name=".Agregar"
+            android:label="@string/title_activity_agregar" >
+        </activity>
+        <activity
+            android:name=".VerPerfil"
+            android:label="@string/title_activity_ver_perfil" >
+        </activity>
+    </application>
+
+</manifest>

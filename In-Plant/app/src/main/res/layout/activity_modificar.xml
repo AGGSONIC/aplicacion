@@ -1,0 +1,73 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.abraham.in_plant.Modificar">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="In-Plant X3"
+        android:id="@+id/tipomod"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Sala"
+        android:id="@+id/zonaidmod"
+        android:layout_below="@+id/tipomod"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Serie I131532"
+        android:id="@+id/noserie"
+        android:layout_above="@+id/zonaidmod"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Identificador"
+        android:id="@+id/textfieldplano"
+        android:layout_below="@+id/zonaidmod"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="34dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/idzonamodnuevo"
+        android:layout_below="@+id/textfieldplano"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/noserie"
+        android:text="Sala" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Seleccionar Planta"
+        android:id="@+id/textView9"
+        android:layout_below="@+id/idzonamodnuevo"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="36dp" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/plantaslist"
+        android:layout_alignParentStart="true"
+        android:choiceMode="singleChoice"
+        android:layout_below="@+id/textView9" />
+
+</RelativeLayout>

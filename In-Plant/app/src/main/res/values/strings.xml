@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">In-Plant</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_registro">Registro</string>
+    <string name="title_activity_estado">Estado In-Plant</string>
+    <string name="title_activity_dispositivos">Dispositivos</string>
+    <string name="title_activity_modificar">Modificar</string>
+    <string name="title_activity_agregar">Agregar</string>
+    <string name="title_activity_ver_perfil">Perfil</string>
+</resources>

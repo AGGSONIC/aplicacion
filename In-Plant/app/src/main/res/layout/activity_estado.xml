@@ -1,0 +1,102 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.abraham.in_plant.Estado">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Temperatura"
+        android:id="@+id/textView8"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="28° C"
+        android:id="@+id/temp"
+        android:layout_below="@+id/textView8"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="In-Plant X3"
+        android:id="@+id/modelo"
+        android:layout_below="@+id/temp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="36dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Planta 1"
+        android:id="@+id/plant"
+        android:layout_below="@+id/modelo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Humedad 82 %"
+        android:id="@+id/humplant"
+        android:layout_below="@+id/plant"
+        android:layout_alignStart="@+id/plant" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Planta 2"
+        android:id="@+id/elementoborra"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/humplant" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Humedad 74 %"
+        android:id="@+id/elementoborra2"
+        android:layout_below="@+id/elementoborra"
+        android:layout_alignStart="@+id/elementoborra" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Planta 3"
+        android:id="@+id/elementoborra3"
+        android:layout_below="@+id/elementoborra2"
+        android:layout_alignStart="@+id/elementoborra2"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Humedad 75 %"
+        android:id="@+id/elementoborra4"
+        android:layout_below="@+id/elementoborra3"
+        android:layout_alignStart="@+id/elementoborra3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Sala"
+        android:id="@+id/identificaplant"
+        android:layout_alignBottom="@+id/modelo"
+        android:layout_alignStart="@+id/plant" />
+</RelativeLayout>

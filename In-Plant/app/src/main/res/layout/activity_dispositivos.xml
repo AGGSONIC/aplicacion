@@ -1,0 +1,130 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.abraham.in_plant.Dispositivos"
+    android:id="@+id/dispositivos">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="In-Plant X3"
+        android:id="@+id/dispident"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="64dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="sala"
+        android:id="@+id/zonaid"
+        android:layout_below="@+id/dispident"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Mono-Plant"
+        android:id="@+id/textView11"
+        android:layout_below="@+id/zonaid"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="45dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Escritorio"
+        android:id="@+id/textView12"
+        android:layout_below="@+id/textView11"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modificar"
+        android:id="@+id/modifica"
+        android:layout_alignBottom="@+id/zonaid"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="5dp"
+        android:clickable="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Baja"
+        android:id="@+id/baja"
+        android:layout_above="@+id/textView11"
+        android:layout_toEndOf="@+id/modifica"
+        android:background="#ffff4e42"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ver"
+        android:id="@+id/button2"
+        android:layout_above="@+id/textView11"
+        android:layout_toEndOf="@+id/baja"
+        android:background="#ff6bff6f"
+        android:layout_marginLeft="5dp"
+        android:clickable="true" />
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modificar"
+        android:id="@+id/borrarelement9"
+        android:layout_marginLeft="5dp"
+        android:layout_alignTop="@+id/textView11"
+        android:layout_alignStart="@+id/modifica"
+        android:onClick="modificarBoton"
+        android:clickable="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Baja"
+        android:id="@+id/borrarelement7"
+        android:background="#ffff4e42"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignTop="@+id/borrarelement9"
+        android:layout_toStartOf="@+id/borrarelement6" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ver"
+        android:id="@+id/borrarelement6"
+        android:background="#ff6bff6f"
+        android:layout_marginLeft="5dp"
+        android:layout_alignTop="@+id/borrarelement7"
+        android:layout_alignStart="@+id/button2"
+        android:clickable="true"
+        android:onClick="verBoton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+ Agregar"
+        android:id="@+id/nuevo"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/button2"
+        android:layout_marginBottom="26dp"
+        android:clickable="true"
+        android:onClick="agregarPlant" />
+
+</RelativeLayout>

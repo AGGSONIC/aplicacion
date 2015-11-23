@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.abraham.in_plant.Estado">
+    <item android:id="@+id/gestPlant" android:title="Gestionar In-Plant"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/verPerfi" android:title="Ver Perfil"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/catalogoPlan" android:title="Ver catalogo de plantas"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/cierraSesion" android:title="Cerrar Sesion"
+        android:orderInCategory="100" app:showAsAction="never" />
+</menu>
