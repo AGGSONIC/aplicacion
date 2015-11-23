@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 
 public class InicioSesion extends ActionBarActivity {
 
+    private EditText usuario=(EditText) findViewById(R.id.mail);
+    private EditText contrasena=(EditText) findViewById(R.id.passw);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,8 +25,14 @@ public class InicioSesion extends ActionBarActivity {
     }
 
     public void botonInicio (View view){
-        Intent botonIni = new Intent(this,Dispositivos.class);
-        startActivity(botonIni);
+        String user=usuario.getText().toString();
+        String pass=contrasena.getText().toString();
+        Usuario u=new Usuario(user,pass);
+        u.iniciarSesion(u);
+        if(true) {
+            Intent i = new Intent(this, Dispositivos.class);
+            startActivity(i);
+        }
     }
 
     @Override
