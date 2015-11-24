@@ -1,6 +1,7 @@
 package com.example.abraham.in_plant;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,11 +35,18 @@ public class JsonPila extends AsyncTask<String,String,String> {
                 buffer.append(linea);
             }
             String aJson=buffer.toString();
-            JSONObject jsonArray=new JSONObject(aJson);
+
+            JSONArray jsonArray=new JSONArray(aJson);
+            JSONObject listas=jsonArray.getJSONObject(0);
             String resp[]=new String[3];
-            resp[0]=jsonArray.getString("idusuario");
-            resp[1]=jsonArray.getString("correo");
-            resp[2]=jsonArray.getString("pass");
+            resp[0]=listas.getString("correo");
+            resp[1]=listas.getString("pass");
+            resp[2]=listas.getString("idusuario");
+
+            Usuario u=new Usuario();
+            u.setUsuario(resp[0]);
+            u.setCorreo(resp[1]);
+            u.setContrasena(resp[2]);
         } catch (JSONException|IOException e) {
             e.printStackTrace();
         }
@@ -48,7 +56,7 @@ public class JsonPila extends AsyncTask<String,String,String> {
 
             try {
                 leido.close();
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

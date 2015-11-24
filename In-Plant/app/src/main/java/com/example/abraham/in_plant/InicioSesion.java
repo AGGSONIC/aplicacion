@@ -1,6 +1,7 @@
 package com.example.abraham.in_plant;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,25 +12,55 @@ import android.widget.EditText;
 
 public class InicioSesion extends ActionBarActivity {
 
-    private EditText usuario=(EditText) findViewById(R.id.mail);
-    private EditText contrasena=(EditText) findViewById(R.id.passw);
+    private EditText usuario;
+    private EditText contrasena;
+    Sqlite sql=new Sqlite(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio_sesion);
-    }
 
+        sql.abrir();
+        sql.cerrar();
+        if(new Usuario().verSesion(sql)) {
+            Intent i = new Intent(this, Dispositivos.class);
+            startActivity(i);
+        }
+    }
+    public void inicio(String... parametro){
+        String correo=parametro[0];
+        String pass=parametro[1];
+        String id=parametro[2];
+        String correold=parametro[3];
+        String passold=parametro[4];
+        Sqlite s=new Sqlite(this);
+        s.abrir();
+        s.insertarAcaptado(id,correo);
+        System.out.println("aceptado"+s.getEstado(id));
+    }
     public void nuevo (View view){
         Intent nuevoUser = new Intent(this,Registro.class);
         startActivity(nuevoUser);
     }
 
     public void botonInicio (View view){
+        usuario=(EditText) findViewById(R.id.mail);
+        contrasena=(EditText) findViewById(R.id.passw);
+
         String user=usuario.getText().toString();
         String pass=contrasena.getText().toString();
         Usuario u=new Usuario(user,pass);
-        u.iniciarSesion(u);
-        if(true) {
+        u.iniciarSesion(u, sql);
+        /*new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Cursor scorre=sql.getCorreo(usuario.getText().toString());
+                String strcorre=sql.imprimeCorreo(scorre);
+                Cursor sedo=sql.getEstado(strcorre);
+                edo[0] =Integer.parseInt(sql.imprimeEstado(sedo));
+            }
+        }).start();*/
+        if(u.coneccion(user,sql)) {
             Intent i = new Intent(this, Dispositivos.class);
             startActivity(i);
         }
@@ -56,4 +87,5 @@ public class InicioSesion extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
