@@ -3,10 +3,15 @@ package com.example.abraham.in_plant;
 /**
  * Created by Abraham on 15/11/2015.
  */
+import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+
+import com.example.abraham.in_plant.controllers.SessionManager;
+import com.example.abraham.in_plant.model.POJOS.UsuarioPojo;
+import com.example.abraham.in_plant.model.connections.UserService;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,6 +23,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class Usuario {
     private String usuario;
@@ -72,6 +83,31 @@ public class Usuario {
 
         return true;
     }
+
+    public void iniciarSesion2(Usuario user, final Context context){
+
+        String correo = user.correo;
+        String contraseña = user.contrasena;
+
+        RestAdapter adapter = new RestAdapter.Builder() .setEndpoint("http://mayanki.mx") .build();
+        UserService service = adapter.create(UserService.class);
+
+        service.iniciar(correo, contraseña, new Callback<ArrayList<UsuarioPojo>>() {
+            @Override
+            public void success(ArrayList<UsuarioPojo> usuarios, Response response) {
+                SessionManager manager = new SessionManager(context);
+                UsuarioPojo user = usuarios.get(0);
+
+                manager.logIn( user.getCorreo(), user.getPass(), Long.getLong(user.getIdusuario()) );
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                //hacer algo cuando falle
+            }
+        });
+    }
+
     public void verifica(String... parametro){
         String correo=parametro[0];
         String pass=parametro[1];
