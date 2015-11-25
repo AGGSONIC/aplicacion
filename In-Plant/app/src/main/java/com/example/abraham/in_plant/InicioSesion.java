@@ -1,5 +1,6 @@
 package com.example.abraham.in_plant;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
@@ -14,6 +15,7 @@ public class InicioSesion extends ActionBarActivity {
 
     private EditText usuario;
     private EditText contrasena;
+
     Sqlite sql=new Sqlite(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +24,10 @@ public class InicioSesion extends ActionBarActivity {
 
         sql.abrir();
         sql.cerrar();
-        if(new Usuario().verSesion(sql)) {
+        /*if(new Usuario().verSesion(sql)) {
             Intent i = new Intent(this, Dispositivos.class);
             startActivity(i);
-        }
+        }*/
     }
     public void inicio(String... parametro){
         String correo=parametro[0];
@@ -46,11 +48,12 @@ public class InicioSesion extends ActionBarActivity {
     public void botonInicio (View view){
         usuario=(EditText) findViewById(R.id.mail);
         contrasena=(EditText) findViewById(R.id.passw);
-
+        Context context=getApplicationContext();
         String user=usuario.getText().toString();
         String pass=contrasena.getText().toString();
         Usuario u=new Usuario(user,pass);
-        u.iniciarSesion(u, sql);
+        u.iniciarSesion2(u,context);
+        //u.iniciarSesion(u, sql);
         /*new Thread(new Runnable() {
             @Override
             public void run() {
@@ -60,10 +63,10 @@ public class InicioSesion extends ActionBarActivity {
                 edo[0] =Integer.parseInt(sql.imprimeEstado(sedo));
             }
         }).start();*/
-        if(u.coneccion(user,sql)) {
+        /*if(u.coneccion(user,sql)) {
             Intent i = new Intent(this, Dispositivos.class);
             startActivity(i);
-        }
+        }*/
     }
 
     @Override
