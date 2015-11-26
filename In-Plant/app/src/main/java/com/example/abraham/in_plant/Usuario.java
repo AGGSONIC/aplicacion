@@ -81,7 +81,7 @@ public class Usuario {
         System.out.println("contra "+contra);
         System.out.println("correo "+correo);
         System.out.println("pass "+contrasena);
-        System.out.println("id"+usuario);
+        System.out.println("id" + usuario);
 
         return true;
     }
@@ -100,15 +100,20 @@ public class Usuario {
 
                 SessionManager manager = new SessionManager(context);
                 UsuarioPojo user = usuarios.get(0);
-                System.out.println("correo pojo "+user.getCorreo());
-                System.out.println("pass idUser? "+user.getIdusuario());
-                manager.logIn( user.getCorreo(), user.getPass(), user.getIdusuario() );
+                if(user.getPass().equals(contrasena)){
+                    manager.logIn( user.getCorreo(), user.getPass(), user.getIdusuario() );
+                    System.out.println("Entra a iniciar");
+                }
+                else{
+                    Toast.makeText(context,"Contraseña y/o Correo Erroneos Intente de nuevo",Toast.LENGTH_SHORT);
+                    System.out.println("no Inicio :)");
+                }
             }
 
             @Override
             public void failure(RetrofitError error) {
                 //hacer algo cuando falle
-                Toast.makeText(context,"Contraseña y/o Correo Erroneos Intente de nuevo",Toast.LENGTH_SHORT);
+                Toast.makeText(context,"Error de Conexion (Compruebe su conexion a internet)",Toast.LENGTH_SHORT);
             }
         });
     }

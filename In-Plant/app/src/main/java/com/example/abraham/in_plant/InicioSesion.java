@@ -9,12 +9,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class InicioSesion extends ActionBarActivity {
 
     private EditText usuario;
     private EditText contrasena;
+    private TextView falloS;
 
     Sqlite sql=new Sqlite(this);
     @Override
@@ -51,8 +54,15 @@ public class InicioSesion extends ActionBarActivity {
         Context context=getApplicationContext();
         String user=usuario.getText().toString();
         String pass=contrasena.getText().toString();
-        Usuario u=new Usuario(user,pass);
-        u.iniciarSesion2(u, context);
+        falloS=(TextView) findViewById((R.id.errorS));
+        if(user.equals("")||pass.equals("")){
+            Toast.makeText(context,"Error Falta Contraseña y/o Correo",Toast.LENGTH_LONG);
+            falloS.setText("Error Falta Contraseña y/o Correo");
+        }
+        else {
+            Usuario u = new Usuario(user, pass);
+            u.iniciarSesion2(u, context);
+        }
         //u.iniciarSesion(u, sql);
         /*new Thread(new Runnable() {
             @Override

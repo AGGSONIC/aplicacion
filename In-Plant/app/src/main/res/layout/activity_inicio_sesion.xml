@@ -62,4 +62,13 @@
         android:layout_toEndOf="@+id/passw"
         android:clickable="true"
         android:onClick="nuevo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/errorS"
+        android:layout_above="@+id/iniciar"
+        android:textColor="#d40400"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
