@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.abraham.in_plant.controllers.SessionManager;
 import com.example.abraham.in_plant.model.POJOS.UsuarioPojo;
@@ -88,23 +89,26 @@ public class Usuario {
     public void iniciarSesion2(Usuario user, final Context context){
 
         String correo = user.correo;
-        String contraseña = user.contrasena;
+        String pass = user.contrasena;
 
         RestAdapter adapter = new RestAdapter.Builder() .setEndpoint("http://mayanki.mx") .build();
         UserService service = adapter.create(UserService.class);
 
-        service.iniciar(correo, contraseña, new Callback<ArrayList<UsuarioPojo>>() {
+        service.iniciar(correo, pass, new Callback<ArrayList<UsuarioPojo>>() {
             @Override
             public void success(ArrayList<UsuarioPojo> usuarios, Response response) {
+
                 SessionManager manager = new SessionManager(context);
                 UsuarioPojo user = usuarios.get(0);
-
-                manager.logIn( user.getCorreo(), user.getPass(), Long.getLong(user.getIdusuario()) );
+                System.out.println("correo pojo "+user.getCorreo());
+                System.out.println("pass idUser? "+user.getIdusuario());
+                manager.logIn( user.getCorreo(), user.getPass(), user.getIdusuario() );
             }
 
             @Override
             public void failure(RetrofitError error) {
                 //hacer algo cuando falle
+                Toast.makeText(context,"Contraseña y/o Correo Erroneos Intente de nuevo",Toast.LENGTH_SHORT);
             }
         });
     }

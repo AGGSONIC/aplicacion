@@ -24,7 +24,7 @@ public class SessionPreference {
      * La primera vez que se checa, por obvias razones el archivo no existe, por lo que hay que dar
      * valores default a las variables.
      */
-    private static final long ID_USUARIO_DEFAULT = -1;
+    private static final String ID_USUARIO_DEFAULT = "";
     private static final String USERNAME_DEFAULT = "", PASSWORD_DEFFAULT = "";
     private static final boolean IS_LOGGED_DEFAULT = false;
 
@@ -35,7 +35,7 @@ public class SessionPreference {
     private Context context;
     private SharedPreferences preferences;
 
-    private long id;
+    private String id;
     private String username;
     private String password;
     private boolean isLogged;
@@ -56,7 +56,7 @@ public class SessionPreference {
         preferences = context.getSharedPreferences(PREFERENCE_SESSION_NAME, context.MODE_PRIVATE);
 
         //Del archivo de preferencias se recogen los valores en el, si no existen, se agarra el default
-        this.id = preferences.getLong(ID_USUARIO_FIELD, ID_USUARIO_DEFAULT);
+        this.id = preferences.getString(ID_USUARIO_FIELD, ID_USUARIO_DEFAULT);
         this.username = preferences.getString(USERNAME_FIELD, USERNAME_DEFAULT);
         this.password = preferences.getString(PASSWORD_FIELD, PASSWORD_DEFFAULT);
         this.isLogged = preferences.getBoolean(IS_LOGGED, IS_LOGGED_DEFAULT);
@@ -66,7 +66,7 @@ public class SessionPreference {
     public void save(){
         SharedPreferences.Editor editor = preferences.edit();
 
-        editor.putLong(ID_USUARIO_FIELD, id);
+        editor.putString(ID_USUARIO_FIELD, id);
         editor.putString(USERNAME_FIELD, username);
         editor.putString(PASSWORD_FIELD, password);
         editor.putBoolean(IS_LOGGED, isLogged);
@@ -102,11 +102,12 @@ public class SessionPreference {
         this.preferences = preferences;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
+        //System.out.println("setId "+id);
         this.id = id;
     }
 

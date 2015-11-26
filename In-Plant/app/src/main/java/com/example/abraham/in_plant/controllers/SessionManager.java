@@ -28,9 +28,10 @@ public class SessionManager {
         return session;
     }
 
-    public void logIn(String username, String password, long id){
-        session.setId(id);
+    public void logIn(String username, String password, String id){
+        //if()
         session.setUsername(username);
+        session.setId(id);
         session.setIsLogged(true);
 
         session.save();

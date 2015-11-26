@@ -52,7 +52,7 @@ public class InicioSesion extends ActionBarActivity {
         String user=usuario.getText().toString();
         String pass=contrasena.getText().toString();
         Usuario u=new Usuario(user,pass);
-        u.iniciarSesion2(u,context);
+        u.iniciarSesion2(u, context);
         //u.iniciarSesion(u, sql);
         /*new Thread(new Runnable() {
             @Override
