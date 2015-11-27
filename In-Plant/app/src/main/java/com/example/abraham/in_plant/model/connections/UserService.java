@@ -16,7 +16,7 @@ public interface UserService {
     @GET("/cIP/iniciar.php")
     void iniciar(
             @Query("c") String correo,
-            @Query("p") String contraseña,
+            @Query("p") String contrasena,
             Callback<ArrayList<UsuarioPojo>> callback
     );
 

@@ -107,12 +107,13 @@ public class Usuario {
                     manager.logIn( user.getCorreo(), user.getPass(), user.getIdusuario() );
                     fallos.setTextColor(Color.parseColor("#01DF3A"));
                     fallos.setText("Iniciando Sesion");
+                    //Toast.makeText(context,"Bienvenido "+)
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(i);
                 }
                 else{
                     Toast.makeText(context,"Contraseña y/o Correo Erroneos Intente de nuevo",Toast.LENGTH_SHORT).show();
-                    System.out.println("no Inicio :)");
+
                 }
             }
 

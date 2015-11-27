@@ -43,7 +43,7 @@
         android:inputType="textPersonName"
         android:text="Apellido"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/apellido"
         android:layout_below="@+id/textView4"
         android:layout_alignParentStart="true" />
 
@@ -53,7 +53,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Correo"
         android:id="@+id/textView5"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/apellido"
         android:layout_alignParentStart="true"
         android:layout_marginTop="15dp" />
 
@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:id="@+id/editText3"
+        android:id="@+id/mailr"
         android:layout_alignTop="@+id/editText2"
         android:layout_alignParentStart="true" />
 
@@ -88,7 +88,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText4"
+        android:id="@+id/passr"
         android:layout_below="@+id/textView6"
         android:layout_alignParentStart="true" />
 
@@ -98,7 +98,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Repetir Contraseña"
         android:id="@+id/textView7"
-        android:layout_below="@+id/editText4"
+        android:layout_below="@+id/passr"
         android:layout_marginTop="10dp"
         android:layout_alignParentStart="true" />
 
@@ -107,7 +107,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText5"
+        android:id="@+id/rpassr"
         android:layout_below="@+id/textView7"
         android:layout_alignParentStart="true" />
 
@@ -118,7 +118,7 @@
         android:id="@+id/button"
         android:onClick="botonRegistrar"
         android:clickable="true"
-        android:layout_below="@+id/editText5"
+        android:layout_below="@+id/rpassr"
         android:layout_toEndOf="@+id/textView5" />
 
     <Button

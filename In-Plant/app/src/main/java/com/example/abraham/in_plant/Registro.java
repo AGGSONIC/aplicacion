@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class Registro extends ActionBarActivity {
@@ -17,8 +19,27 @@ public class Registro extends ActionBarActivity {
     }
     //visualizar boton registrar
     public void botonRegistrar (View view){
-        Intent botonReg = new Intent(this,InicioSesion.class);
-        startActivity(botonReg);
+        nombre=(EditText) findViewById(R.id.nombre);
+        apellido=(EditText) findViewById(R.id.apellido);
+        mailr=(EditText) findViewById(R.id.mailr);
+        passr=(EditText) findViewById(R.id.passr);
+        rpassr=(EditText) findViewById(R.id.rpassr);
+        Registrar regis=new Registrar(nombre.getText().toString(),apellido.getText().toString(),mailr.getText().toString(),passr.getText().toString(),rpassr.getText().toString());
+        if(!(nombre.getText().equals("")||apellido.getText().equals("")||mailr.getText().equals("")||passr.getText().equals("")||rpassr.getText().equals("")))
+        {
+            if(regis.verificaContrasena(passr.getText().toString(),rpassr.getText().toString())) {
+                regis.registra(regis,getApplicationContext());
+                Intent botonReg = new Intent(this, InicioSesion.class);
+                startActivity(botonReg);
+                //Toast.makeText(getApplicationContext(),"Error Las contrasenas no coiciden",Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Toast.makeText(getApplicationContext(),"Error Las contrasenas no coiciden",Toast.LENGTH_SHORT).show();
+            }
+        }
+        else{
+            Toast.makeText(getApplicationContext(),"Faltan Campos por llenar",Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void botonCancelar (View view){
@@ -49,4 +70,9 @@ public class Registro extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    private EditText nombre;
+    private EditText apellido;
+    private EditText mailr;
+    private EditText passr;
+    private EditText rpassr;
 }
