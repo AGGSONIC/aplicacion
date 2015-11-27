@@ -56,12 +56,13 @@ public class InicioSesion extends ActionBarActivity {
         String pass=contrasena.getText().toString();
         falloS=(TextView) findViewById((R.id.errorS));
         if(user.equals("")||pass.equals("")){
-            Toast.makeText(context,"Error Falta Contraseña y/o Correo",Toast.LENGTH_LONG);
+            Toast.makeText(context,"Error Falta Contraseña y/o Correo",Toast.LENGTH_LONG).show();
             falloS.setText("Error Falta Contraseña y/o Correo");
         }
         else {
+            Intent i =new Intent(this,Dispositivos.class);
             Usuario u = new Usuario(user, pass);
-            u.iniciarSesion2(u, context);
+            u.iniciarSesion2(u, context,i,falloS);
         }
         //u.iniciarSesion(u, sql);
         /*new Thread(new Runnable() {

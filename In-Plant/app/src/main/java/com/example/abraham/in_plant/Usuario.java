@@ -5,10 +5,13 @@ package com.example.abraham.in_plant;
  */
 //asdfs
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.abraham.in_plant.controllers.SessionManager;
@@ -86,7 +89,7 @@ public class Usuario {
         return true;
     }
 
-    public void iniciarSesion2(Usuario user, final Context context){
+    public void iniciarSesion2(Usuario user, final Context context, final Intent i, final TextView fallos){
 
         String correo = user.correo;
         String pass = user.contrasena;
@@ -102,10 +105,12 @@ public class Usuario {
                 UsuarioPojo user = usuarios.get(0);
                 if(user.getPass().equals(contrasena)){
                     manager.logIn( user.getCorreo(), user.getPass(), user.getIdusuario() );
-                    System.out.println("Entra a iniciar");
+                    fallos.setTextColor(Color.parseColor("#01DF3A"));
+                    fallos.setText("Iniciando Sesion");
+                    context.startActivity(i);
                 }
                 else{
-                    Toast.makeText(context,"Contraseña y/o Correo Erroneos Intente de nuevo",Toast.LENGTH_SHORT);
+                    Toast.makeText(context,"Contraseña y/o Correo Erroneos Intente de nuevo",Toast.LENGTH_SHORT).show();
                     System.out.println("no Inicio :)");
                 }
             }
@@ -113,7 +118,7 @@ public class Usuario {
             @Override
             public void failure(RetrofitError error) {
                 //hacer algo cuando falle
-                Toast.makeText(context,"Error de Conexion (Compruebe su conexion a internet)",Toast.LENGTH_SHORT);
+                Toast.makeText(context,"Error de Conexion (Compruebe su conexion a internet)",Toast.LENGTH_SHORT).show();
             }
         });
     }
