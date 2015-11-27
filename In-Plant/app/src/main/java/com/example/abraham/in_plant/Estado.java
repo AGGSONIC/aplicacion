@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.abraham.in_plant.controllers.SessionManager;
+
 
 public class Estado extends ActionBarActivity {
 
@@ -36,6 +38,7 @@ public class Estado extends ActionBarActivity {
                 startActivity(gestin);
                 break;
             case R.id.cierraSesion:
+                new SessionManager(getApplicationContext()).logOut();
                 Intent cierre = new Intent(this, InicioSesion.class);
                 startActivity(cierre);
                 break;

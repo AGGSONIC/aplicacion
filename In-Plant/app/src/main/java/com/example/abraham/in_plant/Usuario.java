@@ -107,6 +107,7 @@ public class Usuario {
                     manager.logIn( user.getCorreo(), user.getPass(), user.getIdusuario() );
                     fallos.setTextColor(Color.parseColor("#01DF3A"));
                     fallos.setText("Iniciando Sesion");
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(i);
                 }
                 else{

@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.abraham.in_plant.controllers.SessionManager;
+
 
 public class InicioSesion extends ActionBarActivity {
 
@@ -24,12 +26,14 @@ public class InicioSesion extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio_sesion);
-
-        sql.abrir();
-        sql.cerrar();
-        /*if(new Usuario().verSesion(sql)) {
+        if(new SessionManager(getApplicationContext()).checkSession()){
             Intent i = new Intent(this, Dispositivos.class);
             startActivity(i);
+        }
+        /*sql.abrir();
+        sql.cerrar();
+        /*if(new Usuario().verSesion(sql)) {
+
         }*/
     }
     public void inicio(String... parametro){
