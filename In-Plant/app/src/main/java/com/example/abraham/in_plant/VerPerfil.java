@@ -4,6 +4,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.example.abraham.in_plant.model.preferences.SessionPreference;
+
+import org.w3c.dom.Text;
 
 
 public class VerPerfil extends ActionBarActivity {
@@ -12,6 +17,12 @@ public class VerPerfil extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_perfil);
+        nombre=(TextView) findViewById(R.id.vnomb);
+        apellido=(TextView) findViewById(R.id.vapellido);
+        mail=(TextView) findViewById(R.id.verCorreo);
+        SessionPreference sp=new SessionPreference(getApplicationContext());
+        Usuario u=new Usuario();
+        u.verUsuario(sp.getId(),nombre,apellido,mail,getApplicationContext());
     }
 
     @Override
@@ -35,4 +46,7 @@ public class VerPerfil extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    private TextView nombre;
+    private TextView mail;
+    private TextView apellido;
 }

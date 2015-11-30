@@ -6,16 +6,37 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.abraham.in_plant.controllers.SessionManager;
 
 
 public class Estado extends ActionBarActivity {
 
+    private TextView humedad;
+    private TextView temperatura;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_estado);
+        humedad=(TextView) findViewById(R.id.humedadg);
+        temperatura=(TextView) findViewById(R.id.temp);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    Dispositivo dispositivo = new Dispositivo("0");
+
+                    dispositivo.mostrarEstado(dispositivo, humedad, temperatura);
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+
     }
 
     @Override

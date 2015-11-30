@@ -38,7 +38,7 @@ public class Registrar extends Usuario{
         String pass=regis.contrasena;
         String name=regis.nombre;
         String last=regis.apellido;
-        RestAdapter adapter=new RestAdapter.Builder().setEndpoint("http://mayanki.mx").build();
+        RestAdapter adapter=new RestAdapter.Builder().setEndpoint("http://grimsameridaa.sytes.net").build();
         RegistroService service=adapter.create(RegistroService.class);
         service.iniciar(mail, pass, name, last, new Callback<ArrayList<RegistroPojo>>() {
             @Override

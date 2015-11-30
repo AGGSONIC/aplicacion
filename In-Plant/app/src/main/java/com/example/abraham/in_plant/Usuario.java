@@ -15,7 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.abraham.in_plant.controllers.SessionManager;
+import com.example.abraham.in_plant.model.POJOS.TODOUserPojo;
 import com.example.abraham.in_plant.model.POJOS.UsuarioPojo;
+import com.example.abraham.in_plant.model.connections.TODOUserService;
 import com.example.abraham.in_plant.model.connections.UserService;
 
 import org.json.JSONArray;
@@ -71,7 +73,7 @@ public class Usuario {
         correo=mail;
         contrasena=pass;
     }
-    public Usuario(String user,String pass,String mail){
+    public Usuario (String nomb,String cont,String corre){
 
     }
     public boolean iniciarSesion(Usuario user,Sqlite s){
@@ -94,7 +96,7 @@ public class Usuario {
         String correo = user.correo;
         String pass = user.contrasena;
 
-        RestAdapter adapter = new RestAdapter.Builder() .setEndpoint("http://mayanki.mx") .build();
+        RestAdapter adapter = new RestAdapter.Builder() .setEndpoint("http://grimsameridaa.sytes.net") .build();
         UserService service = adapter.create(UserService.class);
 
         service.iniciar(correo, pass, new Callback<ArrayList<UsuarioPojo>>() {
@@ -104,7 +106,7 @@ public class Usuario {
                 SessionManager manager = new SessionManager(context);
                 UsuarioPojo user = usuarios.get(0);
                 if(user.getPass().equals(contrasena)){
-                    manager.logIn( user.getCorreo(), user.getPass(), user.getIdusuario() );
+                    manager.logIn(user.getCorreo(), user.getPass(), user.getIdusuario());
                     fallos.setTextColor(Color.parseColor("#01DF3A"));
                     fallos.setText("Iniciando Sesion");
                     //Toast.makeText(context,"Bienvenido "+)
@@ -145,19 +147,30 @@ public class Usuario {
             }
         }
     }
-    public boolean verSesion(Sqlite sql){
-        sql.abrir();
-        Cursor scorre=sql.getUsuario();
-        String strcorre=sql.imprimeCorreo(scorre);
-        Cursor sedo=sql.getEstado(strcorre);
-        int edo =Integer.parseInt(sql.imprimeEstado(sedo));
-        sql.cerrar();
-        if(edo ==1) {
-            return true;
-        }
-        else{
-            return false;
-        }
+    public String [] verUsuario (String id, final TextView nomb, final TextView ape,final TextView email,final Context context){
+        String [] datos=new String[4];
+        RestAdapter adapter=new RestAdapter.Builder().setEndpoint("http://grimsameridaa.sytes.net").build();
+        TODOUserService service=adapter.create(TODOUserService.class);
+        service.verUser(id, new Callback<ArrayList<TODOUserPojo>>() {
+            @Override
+            public void success(ArrayList<TODOUserPojo> todoUserPojos, Response response) {
+                TODOUserPojo userPojo=todoUserPojos.get(0);
+                String name=userPojo.getNombre();
+                String last=userPojo.getApellido();
+                String mail=userPojo.getMail();
+                System.out.println(userPojo.getMail());
+
+                nomb.setText(name);
+                ape.setText(last);
+                email.setText(mail);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Toast.makeText(context,"Error de Conexion (Compruebe su conexion a internet)" ,Toast.LENGTH_LONG).show();
+            }
+        });
+        return datos;
     }
     public boolean coneccion(String usuario,Sqlite sql){
         sql.abrir();

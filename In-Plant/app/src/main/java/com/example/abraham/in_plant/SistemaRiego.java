@@ -10,8 +10,8 @@ public class SistemaRiego extends Usuario {
     void/*SistemaRiego*/ estadoSistemaRiego(){
 
     }
-    SistemaRiego(boolean edotank,String serie, float temp){
-
+    SistemaRiego(String serie){
+        noSerie=serie;
     }
     void baja(SistemaRiego bajado){
 
